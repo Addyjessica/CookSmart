@@ -1,31 +1,21 @@
-import axios from 'axios';
 
-// Your Spoonacular API key (replace with your actual API key)
-const API_KEY = 'YOUR_SPOONACULAR_API_KEY';
 
-// API URL to fetch recipes based on ingredients
-const API_URL = 'https://api.spoonacular.com/recipes/findByIngredients';
+// Base URL for the themealdb API
+const API_BASE_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast';
 
-/**
- * Fetch recipes by ingredients using the Spoonacular API
- * @param {string} ingredients - Comma-separated list of ingredients entered by the user
- * @returns {Promise<Array>} - Array of recipe objects
- */
+
+
+// Fetch recipes by ingredients
 export const fetchRecipesByIngredients = async (ingredients) => {
+   
+
     try {
-        // Sending a GET request to the API with ingredients and your API key
-        const response = await axios.get(API_URL, {
-            params: {
-                ingredients: ingredients, // ingredients parameter
-                number: 10,               // number of recipes to fetch
-                apiKey: API_KEY,           // API key parameter
-            },
-        });
-        // Return the data (recipes) from the API response
-        return response.data;
+        const response = await fetch(API_BASE_URL);
+        const data = await response.json()
+        console.log(data);
+        return data.meals; // Return the recipe data
     } catch (error) {
-        // Log an error message if the API request fails
         console.error('Error fetching recipes:', error);
-        return [];
+        throw error; // Handle errors
     }
 };

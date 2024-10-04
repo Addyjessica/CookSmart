@@ -1,0 +1,41 @@
+/* Center the entire app content */
+.App {
+    text-align: center;
+}
+
+/* Style for the recipe card component */
+.Steps-card {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Container for the list of recipe cards */
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Basic styling for the form (search bar) */
+form {
+    margin-bottom: 20px;
+}
+
+/* Styling for the input field */
+input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styling for the search button */
+button {
+    padding: 10px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+}
