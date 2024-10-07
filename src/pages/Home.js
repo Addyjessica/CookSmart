@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fetchRecipesByIngredients } from '../api';
 import SearchBar from '../components/SearchBar';
 import RecipeCard from '../components/RecipeCard';
+import { Box, Card, CardContent, CardCover, CircularProgress, Stack, Typography } from '@mui/joy';
 
 /**
  * Home component - Main page that manages recipe search and results
@@ -22,7 +23,8 @@ const Home = () => {
         try {
             // Fetch the recipes based on the ingredients entered by the user
             const result = await fetchRecipesByIngredients(ingredients);
-            setRecipes(result); // Update the recipes state with the result from the API
+            console.log(result);
+            setRecipes(result); // Update the recipes state with the result from the API\
         } catch (err) {
             // Set error message if fetching fails
             setError('Failed to fetch recipes. Please try again later.');
@@ -32,20 +34,53 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <Stack marginTop={10} paddingX={15}>
+            <Stack>
+                <Typography level='h3' textAlign='left'>What's on your mind?</Typography>
+                <Card component="li" sx={{ minWidth: 300, flexGrow: 1 }}>
+                    <CardCover>
+                        <img
+                            src="https://wallpapers.com/images/hd/food-4k-m37wpodzrcbv5gvw.jpg"
+                            srcSet="https://wallpapers.com/images/hd/food-4k-m37wpodzrcbv5gvw.jpg"
+                            loading="lazy"
+                            style={{
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center center',
+                            }}
+                            alt=""
+                        />
+                    </CardCover>
+                    <CardContent>
+                        <Typography
+                            level="h2"
+                            textAlign="left"
+                            textColor="#fff"
+                            sx={{ fontWeight: 'lg', mt: { xs: 12, sm: 18 } }}
+                        >
+                         Enjoy Healthy yet Tasty Meals    <br /> From the comfort of your home!
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Stack>
             <h1>CookSmart</h1>
             <SearchBar onSearch={handleSearch} />
             {/* Display loading indicator */}
-            {loading && <p>Loading recipes...</p>}
-            {/* Display error message if exists */}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {/* Display a list of RecipeCard components for each fetched recipe */}
-            <div className="recipe-list">
-                {recipes.map((recipe) => (
-                    <RecipeCard key={recipe.idMeal} recipe={recipe} />
-                ))}
-            </div>
-        </div>
+            {loading ?
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <CircularProgress />
+                </Box>
+                : <div className="recipe-list">
+                    {recipes.map((recipe) => (
+                        <RecipeCard key={recipe.id} recipe={recipe} loading={loading} />
+                    ))}
+                </div>}
+        </Stack>
     );
 };
 

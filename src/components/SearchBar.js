@@ -1,3 +1,4 @@
+import { Button, Input } from '@mui/joy';
 import React, { useState } from 'react';
 
 /**
@@ -18,17 +19,33 @@ const SearchBar = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* Input field for entering ingredients */}
-            <input
-                type="text"
-                placeholder="Enter ingredients"
-                value={input}
-                onChange={(ev) => setInput(ev.target.value)} // Update the input state as the user types
-            />
-            {/* Submit button */}
-            <button type="submit">Search</button>
-        </form>
+       <form onSubmit={handleSubmit} 
+      style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }} // Center the input
+>
+  {/* Input field for entering ingredients */}
+  <Input
+    size="sm"
+    sx={{
+      '--Input-decoratorChildHeight': '45px',
+      maxWidth: '600px',
+      width: '100%', // Make input responsive
+    }}
+    placeholder="Search for recipes"
+    type="text"
+    value={input}
+    onChange={(ev) => setInput(ev.target.value)} // Update the input state as the user types
+    endDecorator={
+      <Button
+        variant="solid"
+        color="primary"
+        type="submit"
+        sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+      >
+        Search
+      </Button>
+    }
+  />
+</form>
     );
 };
 
