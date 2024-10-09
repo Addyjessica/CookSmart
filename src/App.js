@@ -1,19 +1,30 @@
 import React from 'react';
-import Home from './pages/Home';        // Import the Home component
-import './styles/App.css';              // Import the CSS for styling
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // Import required Router components
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
+import './styles/App.css';
+import NearbyRestaurants from './pages/NearbyRestaurant';
+import SavedRecipes from './components/SavedRecipes';
 
-/**
- * App component - The root component that renders the Home page
- */
 function App() {
-    return (
-        <div className="App">
-            {/* Render the Home component */}
-           <Navbar />
-            <Home />
-        </div>
-    );
+  return (
+    <Router>
+      <div className="App">
+        {/* The Navbar will appear on all pages */}
+        <Navbar />
+
+        {/* Define routes for different components */}
+        <Routes>
+          {/* Route for Home page */}
+          <Route path="/" element={<Home />} />
+          
+          {/* Route for Nearby Restaurants page */}
+          <Route path="/nearby-restaurants" element={<NearbyRestaurants />} />
+          <Route path="favorite"  element={<SavedRecipes />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

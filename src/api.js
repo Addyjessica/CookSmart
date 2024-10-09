@@ -1,6 +1,6 @@
 
 
-// Base URL for the themealdb API
+// Base URL for the tasty API
 const API_BASE_URL = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=100&q=';
 const key = "839ea37f2fmsh798b9b58e610d05p1de960jsn98c1f5d0d4d9"
 

@@ -34,7 +34,7 @@ const Home = () => {
     };
 
     return (
-        <Stack marginTop={10} paddingX={15}>
+        <Stack marginTop={10} paddingX={5}>
             <Stack>
                 <Typography level='h3' textAlign='left'>What's on your mind?</Typography>
                 <Card component="li" sx={{ minWidth: 300, flexGrow: 1 }}>
@@ -57,7 +57,7 @@ const Home = () => {
                             textColor="#fff"
                             sx={{ fontWeight: 'lg', mt: { xs: 12, sm: 18 } }}
                         >
-                         Enjoy Healthy yet Tasty Meals    <br /> From the comfort of your home!
+                            Glorious Meals Fucking <br /> cock suckers
                         </Typography>
                     </CardContent>
                 </Card>

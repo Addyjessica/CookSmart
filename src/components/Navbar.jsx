@@ -16,6 +16,9 @@ import Person from '@mui/icons-material/Person';
 import Apps from '@mui/icons-material/Apps';
 import FactCheck from '@mui/icons-material/FactCheck';
 import BookmarkAdd from '@mui/icons-material/BookmarkAdd';
+import { Favorite, HeartBroken, Restaurant } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { BiHeart } from 'react-icons/bi';
 
 const useRovingIndex = (options) => {
   const {
@@ -286,6 +289,8 @@ const AdmissionsMenu = React.forwardRef(
   },
 );
 
+// install react router dom with npm install react-router-dom
+
 export default function Navbar() {
   const { targets, getTargetProps, setActiveIndex, focusNext, focusPrevious } =
     useRovingIndex();
@@ -305,13 +310,45 @@ export default function Navbar() {
           <ListItemButton
             role="menuitem"
             {...getTargetProps(0)}
-            component="a"
-            href="#navigation-menu"
+            component={Link}
+            to="/"
           >
             <ListItemDecorator>
               <HomeRounded />
             </ListItemDecorator>
             Home
+          </ListItemButton>
+        </ListItem>
+
+                <ListItem role="none">
+          <ListItemButton
+            role="menuitem"
+            {...getTargetProps(0)}
+            component={Link}
+            to="/nearby-restaurants"
+          >
+            <ListItemDecorator>
+              <Restaurant />
+            </ListItemDecorator>
+            Nearby Restaurants
+          </ListItemButton>
+        </ListItem>
+        
+        <ListItem role="none">
+          <ListItemButton
+            role="menuitem"
+            {...getTargetProps(0)}
+            component={Link}
+            to="/favorite"
+          >
+            <ListItemDecorator>
+                <BiHeart 
+                color="danger"
+                variant="solid"
+                size={24}
+                />
+            </ListItemDecorator>
+            favorite
           </ListItemButton>
         </ListItem>
         {/* <ListItem role="none">
