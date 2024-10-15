@@ -19,6 +19,7 @@ import BookmarkAdd from '@mui/icons-material/BookmarkAdd';
 import { Favorite, HeartBroken, Restaurant } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { BiHeart } from 'react-icons/bi';
+import { VscNote } from "react-icons/vsc";
 
 const useRovingIndex = (options) => {
   const {
@@ -351,6 +352,28 @@ export default function Navbar() {
             favorite
           </ListItemButton>
         </ListItem>
+        
+        <ListItem role="none">
+          <ListItemButton
+            role="menuitem"
+            {...getTargetProps(0)}
+            component={Link}
+            to="/planner"
+          >
+            <ListItemDecorator>
+                <VscNote
+                color="danger"
+                variant="solid"
+                size={24}
+                />
+            </ListItemDecorator>
+            Meal-planner
+          </ListItemButton>
+        </ListItem>
+
+
+       
+
         {/* <ListItem role="none">
           <AboutMenu
             onMouseEnter={() => {

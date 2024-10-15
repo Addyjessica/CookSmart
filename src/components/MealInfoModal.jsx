@@ -4,14 +4,41 @@ import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
-import { Box, Card, CardContent, CardCover, Stack, Step, Stepper } from '@mui/joy';
+import { Box, Card, CardContent, CardCover, Stack } from '@mui/joy';
 
 export default function MealModal({ open, setOpen, setData }) {
   const [showTags, setShowTags] = React.useState(false); // State to control tag visibility
+  const [load, setLoad] = React.useState(false); // State to control loading state
 
   const toggleTags = () => {
     setShowTags(prev => !prev); // Toggle the state
   };
+
+  const handleSave = () => {
+    setLoad(true);
+  
+    if (setData?.sections[0]?.components) {
+      // Extract the plural names of the ingredients
+      const ingredientPlurals = setData.sections[0].components.map(component => 
+        component.ingredient.display_plural
+      );
+      
+      // Get the existing saved meals and ingredients from localStorage
+      const savedMeals = JSON.parse(localStorage.getItem('mealPlannerIngredients')) || {};
+  
+      // Save the current meal and its ingredients
+      savedMeals[setData.name] = ingredientPlurals;
+  
+      // Update the localStorage with the new meal-ingredient pair
+      localStorage.setItem('mealPlannerIngredients', JSON.stringify(savedMeals));
+  
+      
+    } else {
+      setLoad(false);
+      console.log('No ingredients found to save.');
+    }
+  };
+
   return (
     <React.Fragment>
       <Modal
@@ -95,6 +122,12 @@ export default function MealModal({ open, setOpen, setData }) {
         ))}
       </Stack>
     </Box>
+        <Button 
+        onClick={handleSave}
+        loading={load}
+        >
+          Generate Shopping List
+        </Button>
            <Button onClick={toggleTags} variant="plain" color='danger' sx={{ mt: 1 }}>
             {showTags ? 'Hide Tags' : 'Show Tags'}
           </Button>

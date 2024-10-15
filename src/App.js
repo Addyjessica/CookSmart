@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import './styles/App.css';
 import NearbyRestaurants from './pages/NearbyRestaurant';
 import SavedRecipes from './components/SavedRecipes';
+import MealPlanner from './pages/MealPlanner';
 
 function App() {
   return (
@@ -20,7 +21,10 @@ function App() {
           
           {/* Route for Nearby Restaurants page */}
           <Route path="/nearby-restaurants" element={<NearbyRestaurants />} />
+          {/* Route for saved recipes page */}
           <Route path="favorite"  element={<SavedRecipes />} />
+          {/* Route for meal planner page */}
+          <Route path="/planner"  element={<MealPlanner />} />
         </Routes>
       </div>
     </Router>
@@ -28,3 +32,4 @@ function App() {
 }
 
 export default App;
+ 
