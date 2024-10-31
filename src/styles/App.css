@@ -39,3 +39,12 @@ button {
     color: white;
     border-radius: 4px;
 }
+
+.restaurant-popup{
+    border-radius: 20px;
+}
+
+.mapboxgl-popup-content {
+    background-color: transparent;
+    border: none;
+}
