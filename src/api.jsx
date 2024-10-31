@@ -14,7 +14,8 @@ const fetchRecipesByIngredients = async (recipe) => {
     const data = await response.json();
     return data.results; // Return the recipe data
   } catch (error) {
-    console.error('Error fetching recipes:', error);
+    // eslint-disable-next-line no-alert
+    alert('Error fetching recipes:', error);
     throw error; // Handle errors
   }
 };

@@ -40,7 +40,6 @@ export default function MealModal({ open, setOpen, setData }) {
       }, 1000);
     } else {
       setLoad(false);
-      console.log('No ingredients found to save.');
     }
   };
 

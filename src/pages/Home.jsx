@@ -21,14 +21,11 @@ const Home = () => {
   const handleSearch = async (ingredients) => {
     setLoading(true); // Set loading to true before fetching
     setError(null); // Reset any previous error
-    console.log(ingredients);
     try {
       // Fetch the recipes based on the ingredients entered by the user
       const result = await fetchRecipesByIngredients(ingredients);
-      console.log(result);
       setRecipes(result); // Update the recipes state with the result from the API\
     } catch (err) {
-      console.error('Error fetching recipes:', err);
       // Set error message if fetching fails
       setError('Failed to fetch recipes. Please try again later.');
     } finally {
@@ -60,7 +57,7 @@ const Home = () => {
               textColor="#fff"
               sx={{ fontWeight: 'lg', mt: { xs: 12, sm: 18 } }}
             >
-              Tasty Meals 
+              Tasty Meals
               {' '}
               <br />
               {' '}
